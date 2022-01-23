@@ -77,8 +77,8 @@ Input -1+2+3-4 will be parsed to numeric array [-1, 2, 3, -4].
 
 Input field will accept only numeric characters and +/- signs.
 
-<b>Prime Checker</b>
+<b>Prime Checker</b>  
 Add number to input field and click Check button to check if it is a prime number or not.
 
-<b>Notes</b>
+<b>Notes</b>  
 Developer console will reveal each API call upon calculation. This is left intentionally in place in order to confirm API calls.
