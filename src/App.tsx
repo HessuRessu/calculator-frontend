@@ -1,11 +1,13 @@
 import './App.css';
 import Calculator from './components/Calculator';
+import Equation from './components/Equation';
 import Prime from './components/Prime';
 
 function App() {
   return (
     <div className="App">
-     <Calculator />
+      <Calculator />
+     <Equation />
      <Prime />
     </div>
   );

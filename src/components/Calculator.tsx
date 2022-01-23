@@ -18,11 +18,11 @@ class Calculator extends React.Component<{}, CalculationState> {
         this.state = {
             calculated: false,
             isPrime: false,
-            equation: "",
             result: 0,
+            inputs: ["nubmer-0"],
             error: { isError: false, message: ""} as CalculationError
         } as CalculationState;
-        this.numbers = [];
+        this.numbers = [0];
     }
 
     /**
@@ -32,10 +32,16 @@ class Calculator extends React.Component<{}, CalculationState> {
         return (
             <>
                 <h1 className="header">Simple Calculator</h1>
-                <input type="text" className="numeric-input" placeholder="Enter equation ie. -1+2+3" onBlur={event => this.completeEquation(event)} onChange={event => this.checkEquation(event)} />
-                <button className="calculate-button" onClick={ () => this.calculateSum() }>CALCULATE</button> <br />
+                <button className="remove-button" onClick={ () => this.removeNumber() } title="Remove number"><img src="remove.png" className="calculator-icon" /></button>
+                <button className="calculator-button" onClick={ () => this.calculateSum() }>CALCULATE</button>
+                <button className="add-button" onClick={ () => this.addNumber() } title="Add number"><img src="add.png" className="calculator-icon" /></button>
+                <br />
+                <div className="calculator-numbers"> 
+                    {this.state.inputs.map(input => <input defaultValue="0" type="number" className="calculator-number" key={input} name={input} onChange={event => this.updateNumber(event)} />)}
+                </div>
+
                 <div className={this.state.calculated ? "visible": "hidden"}>
-                    {this.state.equation} = {this.state.result} ({this.state.isPrime ? 'prime' : 'not a prime'})
+                    Result is {this.state.result}, which is {this.state.isPrime ? 'a prime' : 'not a prime'}.
                 </div>
                 <div className={this.state.error.isError ? "visible error": "hidden"}>
                     {this.state.error.message}
@@ -45,32 +51,33 @@ class Calculator extends React.Component<{}, CalculationState> {
     }
 
     /**
-    * Checking equation when it has been changed.
-    * 
-    * @param {React.ChangeEvent<HTMLInputElement>} event Calling element
+    * Adding number to calculator.
     */
-    checkEquation(event: React.ChangeEvent<HTMLInputElement>) {
-        event.target.value = event.target.value.replace(/[^0-9+-]/gmi, "").replace(/(\+\+)/gmi, "+").replace(/(\+-)/gmi, "-").replace(/(-\+)/gmi, "-");
-    }
-    
-    /**
-    * Completing equation.
-    * 
-    * @param {React.ChangeEvent<HTMLInputElement>} event Calling element
-    */
-     completeEquation(event: React.ChangeEvent<HTMLInputElement>) {
-        this.state.equation = event.target.value;
-        if (this.state.equation.endsWith("+") || this.state.equation.endsWith("-"))
-            this.state.equation = this.state.equation.substring(0, this.state.equation.length-1);
-        event.target.value = this.state.equation;
+     addNumber() {
+        var newInput = `nubmer-${this.state.inputs.length}`;
+        this.setState(prevState => ({ inputs: prevState.inputs.concat([newInput]) }));
+        this.numbers.push(0);
         
-        let parts: string[] = this.state.equation.split(/(\+|-)/).map(String);
-        this.numbers = [];
-        for (let i = 0; i < parts.length; i+=2) {
-            if (parts[i] !== "") {
-                this.numbers.push(i === 0 || parts[i-1] === "+" ? parseInt(parts[i]) : -parseInt(parts[i]));
-            }
+    }
+
+    /**
+    * Removing number from calculator.
+    */
+     removeNumber() {
+        if (this.state.inputs.length > 1) {
+            this.setState(prevState => ({ inputs: prevState.inputs.slice(0, prevState.inputs.length-1) }));
+            this.numbers = this.numbers.slice(0, this.numbers.length-1);
         }
+    }
+
+    /**
+    * Updating number value based on it's elements index.
+    * 
+    * @param {React.ChangeEvent<HTMLInputElement>} event Calling element
+    */
+     updateNumber(event: React.ChangeEvent<HTMLInputElement>) {
+        let index = parseInt(event.target.name.split("-")[1]);
+        this.numbers[index] = Number(event.target.value);
     }
 
     /**
@@ -84,7 +91,6 @@ class Calculator extends React.Component<{}, CalculationState> {
         axios.get(apiEndpoint).then((response) => {
             this.setState(prevState => ({
                 calculated: true,
-                equation: this.state.equation,
                 isPrime: response.data.isPrime,
                 result: response.data.result,
                 error: {isError: false, message: ""} as CalculationError

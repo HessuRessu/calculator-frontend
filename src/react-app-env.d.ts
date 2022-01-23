@@ -20,11 +20,20 @@ interface PrimeState {
     error: CalculationError;
 }
 
-// Interface for simple calculator state.
-interface CalculationState {
+// Interface for equation state.
+interface EquationState {
     calculated: boolean;
     equation: string;
     result: number;
     isPrime: boolean;
+    error: CalculationError;
+}
+
+// Interface for simple calculator state.
+interface CalculationState {
+    calculated: boolean;
+    result: number;
+    isPrime: boolean;
+    inputs: string[];
     error: CalculationError;
 }

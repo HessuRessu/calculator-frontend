@@ -63,14 +63,22 @@ run stop
 
 By default, container will expose port 8080, which may be accessed with browser by url: http://localhost:8080
 
-GUI offers two functions "Simple Calculator" and "Prime Checker" as follows:
+GUI offers three functions Simple Calculator, Equation Calculator and Prime Checker as follows:
 
 ![GUI Example](./img/GUI.png "Calculator frontend")
 
-List of numbers can be inputted to Simple Calculator if form of equation ie. 1+2+3.  
+<b>Simple Calculator</b>  
+Numbers can be added to Simple Calculator by clicking plus button and removed by clicking minus button. Calculate button calls backend to sum up given numbers.
+
+<b>Equation Calculator</b>  
+List of numbers can be inputted to Equation Checker if form of equation ie. 1+2+3.  
 Negative numbers are handled as normal substraction within equation.  
 Input -1+2+3-4 will be parsed to numeric array [-1, 2, 3, -4].
 
-Input fields will accept only numeric characters and +/- signs.
+Input field will accept only numeric characters and +/- signs.
 
+<b>Prime Checker</b>
+Add number to input field and click Check button to check if it is a prime number or not.
+
+<b>Notes</b>
 Developer console will reveal each API call upon calculation. This is left intentionally in place in order to confirm API calls.

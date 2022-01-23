@@ -1,0 +1,97 @@
+.remove-button {
+    padding: 1em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-width: 4em;
+    background-color: rgb(116, 140, 163);
+    border-radius: 8px 0px 0px 8px;
+    border-left: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    border-right: 0px;
+    color: white;
+    font-weight: bolder;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    margin-bottom: 1em;
+}
+
+.remove-button:hover {
+    background-color: rgb(86, 99, 112);
+    cursor: pointer;
+}
+
+.remove-button:focus {
+    outline: none;
+}
+
+.add-button {
+    padding: 1em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-width: 4em;
+    background-color: rgb(116, 140, 163);
+    border-radius: 0px 8px 8px 0px;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    border-left: 0px;
+    color: white;
+    font-weight: bolder;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    margin-bottom: 1em;
+}
+
+.add-button:hover {
+    background-color: rgb(86, 99, 112);
+    cursor: pointer;
+}
+
+.add-button:focus {
+    outline: none;
+}
+
+.calculator-button {
+    padding: 1em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-width: 10em;
+    background-color: lightslategray;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    border-left: 1px solid rgb(88, 101, 114);
+    border-right: 1px solid rgb(88, 101, 114);
+    color: white;
+    font-weight: bolder;
+    margin-bottom: 1em;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+.calculator-button:hover {
+    background-color: rgb(86, 99, 112);
+    cursor: pointer;
+}
+
+.calculator-button:focus {
+    outline: none;
+}
+
+.calculator-number {
+    padding: .5em;
+    width: 4em;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 0.2);
+    margin: .2em;
+}
+
+.calculator-numbers {
+    padding: 1em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 25em;
+    background-color: rgb(243, 243, 243);;
+    border: 1px solid #ccc;
+    margin-bottom: .5em;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    display: inline-block;
+}
+
+.calculator-icon {
+    width: 1em;
+    height: 1em;
+}
