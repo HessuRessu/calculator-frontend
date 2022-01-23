@@ -19,7 +19,7 @@ class Calculator extends React.Component<{}, CalculationState> {
             calculated: false,
             isPrime: false,
             result: 0,
-            inputs: ["nubmer-0"],
+            inputs: ["number-0"],
             error: { isError: false, message: ""} as CalculationError
         } as CalculationState;
         this.numbers = [0];
@@ -54,7 +54,7 @@ class Calculator extends React.Component<{}, CalculationState> {
     * Adding number to calculator.
     */
      addNumber() {
-        var newInput = `nubmer-${this.state.inputs.length}`;
+        var newInput = `number-${this.state.inputs.length}`;
         this.setState(prevState => ({ inputs: prevState.inputs.concat([newInput]) }));
         this.numbers.push(0);
         
